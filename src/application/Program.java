@@ -3,6 +3,8 @@ package application;
 import java.util.Date;
 import java.util.List;
 
+import javax.xml.crypto.KeySelectorResult;
+
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
 import model.entities.Department;
@@ -35,6 +37,12 @@ public class Program {
 		Seller slr = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
 		sellerDao.insert(slr);
 		System.out.println("Inserted! New Id = " + slr.getId());
+		
+		System.out.println("\n=== Test 05: Seller update ===");
+		seller = sellerDao.findById(1);
+		seller.setName("Matha Waine");
+		sellerDao.update(seller);
+		System.out.println("Update completed");
 		
 	}
 
